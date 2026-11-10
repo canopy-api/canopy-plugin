@@ -1,7 +1,7 @@
 {
   "name": "canopy",
-  "version": "2.2.1",
-  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, reviews, deals, best sellers, and ASIN lookup.",
+  "version": "2.3.0",
+  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, ratings, deals, best sellers, and ASIN lookup.",
   "author": {
     "name": "Canopy",
     "url": "https://www.canopyapi.co"
@@ -18,7 +18,7 @@
     "asin lookup",
     "buy box",
     "amazon deals",
-    "amazon reviews"
+    "amazon ratings"
   ],
   "logo": "assets/canopy-icon.png"
 }

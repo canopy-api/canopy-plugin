@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "canopy",
-  "version": "2.2.1",
-  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, reviews, deals, best sellers, and ASIN lookup.",
+  "version": "2.3.0",
+  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, ratings, deals, best sellers, and ASIN lookup.",
   "author": {
     "name": "Canopy",
     "url": "https://www.canopyapi.co"
@@ -16,7 +16,7 @@
     "product-data",
     "asin",
     "prices",
-    "reviews",
+    "ratings",
     "deals"
   ]
 }

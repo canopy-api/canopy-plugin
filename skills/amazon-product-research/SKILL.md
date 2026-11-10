@@ -1,11 +1,24 @@
 ---
 name: amazon-product-research
-description: Research live Amazon listings with the Canopy MCP server, including product search, product details, variants, stock and sales estimates, reviews, best sellers, categories, sellers, authors, and ASIN/GTIN conversion. Use when the user asks about an Amazon product, ASIN, ISBN, UPC, EAN, seller, review, best-seller rank, or marketplace listing. For prices, offers, coupons, or deals, use the amazon-price-and-deals skill.
+description: Look up live Amazon listings with the Canopy MCP server, including product details, variants, stock, ratings, and ASIN/GTIN conversion. Use when the user asks a general question about an Amazon product, ASIN, UPC, EAN, or marketplace listing that no narrower Canopy skill covers. Narrower skills exist for prices and deals, best sellers, books and authors, search results, sales and demand, ratings, sellers, product comparison, and category browsing.
 ---
 
 # Amazon product research
 
-Use the Canopy MCP server bundled with this plugin (server name `canopy`, endpoint `https://mcp.canopyapi.co/mcp`). Every tool is read-only. Do not scrape Amazon HTML and do not browse the site to reconstruct data the tools already return. For a price, coupon, or deal question, use the `amazon-price-and-deals` skill.
+Use the Canopy MCP server bundled with this plugin (server name `canopy`, endpoint `https://mcp.canopyapi.co/mcp`). Every tool is read-only. Do not scrape Amazon HTML and do not browse the site to reconstruct data the tools already return. 
+## Narrower skills
+
+Use one of these when the question fits it. Use this skill for everything else, and as the tool index.
+
+- Prices, offers, coupons, and deals: `amazon-price-and-deals`
+- Best-seller lists and rank: `amazon-best-sellers`
+- Books, ISBNs, and authors: `amazon-books-and-authors`
+- What shows up for a search term: `amazon-search-results`
+- Unit sales and niche size: `amazon-sales-and-demand`
+- Star ratings and top-rated products: `amazon-ratings`
+- Sellers, storefronts, and the Buy Box holder: `amazon-seller-research`
+- Side-by-side comparison of products: `amazon-product-comparison`
+- The category tree and products in a category: `amazon-category-browse`
 
 ## Before calling a tool
 
@@ -21,7 +34,6 @@ Use the Canopy MCP server bundled with this plugin (server name `canopy`, endpoi
 - Seller offers and Buy Box: `get_amazon_product_offers`
 - Stock estimate: `get_amazon_product_stock`
 - Sales estimate: `get_amazon_product_sales`
-- Top reviews: `get_amazon_product_top_reviews`
 - Current deals: `get_amazon_deals`
 - Best sellers: `get_amazon_bestseller_categories`, then `get_amazon_bestsellers`
 - Category browse: `get_amazon_categories`, then `get_amazon_category`

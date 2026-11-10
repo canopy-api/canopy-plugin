@@ -1,14 +1,26 @@
 # Canopy Plugin — Amazon Product Data for AI Agents
 
-The Canopy plugin for Claude Code, Claude.ai, Cursor, Grok Build, and other [Agent Plugins](https://agent-plugins.org/specification) clients. It connects your agent to live Amazon data from the [Canopy API](https://canopyapi.co/): search, prices, Buy Box offers, reviews, deals, best sellers, sales estimates, and ASIN lookup.
+The Canopy plugin for Claude Code, Claude.ai, Cursor, Grok Build, and other [Agent Plugins](https://agent-plugins.org/specification) clients. It connects your agent to live Amazon data from the [Canopy API](https://canopyapi.co/): search, prices, Buy Box offers, ratings, deals, best sellers, sales estimates, and ASIN lookup.
 
-The plugin holds no code. It points each client at the hosted Canopy MCP server, `https://mcp.canopyapi.co/mcp`, and ships two skills that teach the agent how to use it. The server itself lives in [canopy-api/canopy-api-mcp](https://github.com/canopy-api/canopy-api-mcp): go there for the tool list, authentication details, self-hosting, and server issues.
+The plugin holds no code. It points each client at the hosted Canopy MCP server, `https://mcp.canopyapi.co/mcp`, and ships ten skills that teach the agent how to use it. The server itself lives in [canopy-api/canopy-api-mcp](https://github.com/canopy-api/canopy-api-mcp): go there for the tool list, authentication details, self-hosting, and server issues.
 
 ## What you get
 
-- **The Canopy MCP server**, with 17 read-only Amazon data tools.
-- **`amazon-product-research`**, a skill for product search and details, variants, stock and sales estimates, reviews, best sellers, sellers, and ASIN/GTIN conversion.
-- **`amazon-price-and-deals`**, a skill for prices, Buy Box offers, coupons, and current deals.
+- **The Canopy MCP server**, with 16 read-only Amazon data tools.
+- **Ten skills** that teach the agent which tools to call and how to report the results:
+
+| Skill | Use it for |
+| --- | --- |
+| `amazon-product-research` | Product details, variants, stock, ratings, and ASIN/GTIN conversion. The general skill and tool index. |
+| `amazon-price-and-deals` | Prices, Buy Box offers, coupons, and current deals. |
+| `amazon-best-sellers` | Best-seller lists by category and a product's rank in them. |
+| `amazon-books-and-authors` | ISBN lookup, a book's formats and editions, and an author's catalogue. |
+| `amazon-search-results` | What appears for a search term, in what order, which results are sponsored, and related queries. |
+| `amazon-sales-and-demand` | Unit sales estimates for a product and the size of a niche. |
+| `amazon-ratings` | A product's star rating and number of ratings, and the top-rated products for a search or category. |
+| `amazon-seller-research` | A seller's profile, rating, and catalogue, and who holds the Buy Box. |
+| `amazon-product-comparison` | Side-by-side comparison of products on price, ratings, and specifications. |
+| `amazon-category-browse` | The category tree and the products inside a category. |
 
 The plugin does not embed an API key. OAuth-capable clients discover sign-in from the server and open Canopy's consent page on first use. If a client only supports a static header, set `CANOPY-API-KEY` in that client. Get a key at [canopyapi.co](https://canopyapi.co/).
 
@@ -33,7 +45,7 @@ After the plugin is listed in Anthropic's directory, add **Canopy** from the dir
 
 ### Cursor
 
-Install **Canopy** from Customize or the [Cursor Marketplace](https://cursor.com/marketplace) after it is listed. To try it before then, copy this repository to `~/.cursor/plugins/local/canopy` (a symlink that points outside that folder is ignored), reload the window, and confirm the Canopy server and both skills in Customize.
+Install **Canopy** from Customize or the [Cursor Marketplace](https://cursor.com/marketplace) after it is listed. To try it before then, copy this repository to `~/.cursor/plugins/local/canopy` (a symlink that points outside that folder is ignored), reload the window, and confirm the Canopy server and all ten skills in Customize.
 
 ### Grok Build
 
@@ -66,9 +78,8 @@ canopy-plugin/
 ├── skills/
 │   ├── amazon-product-research/
 │   │   ├── SKILL.md
-│   │   └── references/tools.md
-│   └── amazon-price-and-deals/
-│       └── SKILL.md
+│   │   └── references/tools.md # tool parameters
+│   └── <nine more skills>/     # one SKILL.md each; see "What you get"
 ├── assets/canopy-icon.png      # listing icon
 └── submissions/                # how to publish to each marketplace
 ```

@@ -13,7 +13,6 @@ Product-scoped tools take exactly one of `asin`, `url`, or `gtin`.
 | `get_amazon_product_offers` | one of `asin`, `url`, `gtin` | `domain`, `page` |
 | `get_amazon_product_stock` | one of `asin`, `url`, `gtin` | `domain` |
 | `get_amazon_product_sales` | one of `asin`, `url`, `gtin` | `domain` |
-| `get_amazon_product_top_reviews` | one of `asin`, `url`, `gtin` | `domain` |
 | `search_amazon_products` | `searchTerm` | `domain`, `categoryId`, `page`, `limit` (typically 20–40), `minPrice`, `maxPrice`, `conditions` (`NEW`, `USED`, `RENEWED`, comma-separated), `sort` |
 | `get_amazon_autocomplete` | `searchTerm` | `domain`, `category` (Amazon autocomplete alias) |
 | `get_amazon_deals` | — | `domain`, `categoryId`, `page`, `limit` (typically 20–40) |

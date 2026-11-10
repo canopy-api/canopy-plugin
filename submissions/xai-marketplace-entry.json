@@ -1,6 +1,6 @@
 {
   "name": "canopy",
-  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, reviews, deals, best sellers, and ASIN lookup. Connects to the hosted Canopy MCP server with OAuth.",
+  "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, ratings, deals, best sellers, and ASIN lookup. Connects to the hosted Canopy MCP server with OAuth.",
   "category": "productivity",
   "source": {
     "source": "url",
@@ -17,7 +17,7 @@
     "asin lookup",
     "buy box",
     "amazon deals",
-    "amazon reviews"
+    "amazon ratings"
   ],
   "domains": [
     "canopyapi.co",

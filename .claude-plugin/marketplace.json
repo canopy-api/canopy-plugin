@@ -10,7 +10,7 @@
     {
       "name": "canopy",
       "source": "./",
-      "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, reviews, deals, best sellers, and ASIN lookup.",
+      "description": "Live Amazon product data from Canopy: search, prices, Buy Box offers, ratings, deals, best sellers, and ASIN lookup.",
       "author": {
         "name": "Canopy",
         "email": "support@canopyapi.co",
@@ -24,7 +24,7 @@
         "amazon",
         "asin",
         "prices",
-        "reviews",
+        "ratings",
         "deals",
         "product-data"
       ]
