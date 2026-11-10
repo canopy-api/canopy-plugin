@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Manifests are strict JSON
+        run: |
+          for file in plugin.json mcp.json .mcp.json .claude-plugin/*.json .cursor-plugin/*.json .grok-plugin/*.json submissions/*.json; do
+            jq empty "$file" || { echo "::error file=$file::not valid JSON"; exit 1; }
+          done
+
+      - name: Every manifest carries the same version
+        run: |
+          versions=$(jq -r '.version' plugin.json .claude-plugin/plugin.json .cursor-plugin/plugin.json .grok-plugin/plugin.json | sort -u)
+          if [ "$(echo "$versions" | wc -l)" -ne 1 ] || [ "$versions" = "null" ]; then
+            echo "::error::plugin version differs across manifests: $(echo $versions)"
+            exit 1
+          fi
+
+      - name: Server declarations carry no credentials
+        run: |
+          for file in mcp.json .mcp.json; do
+            if jq -e '[.mcpServers[] | has("headers")] | any' "$file" > /dev/null; then
+              echo "::error file=$file::mcpServers must not set headers"
+              exit 1
+            fi
+          done
+
+      - name: Only directory-allowed file types
+        run: |
+          bad=$(git ls-files | grep -Ev '\.(md|txt|json|ya?ml|png|jpe?g|gif|webp|ico)$|^LICENSE$|^\.gitignore$' || true)
+          for file in $(git ls-files); do
+            if [ "$(head -c 2 "$file")" = "#!" ]; then bad="$bad $file"; fi
+          done
+          lock=$(git ls-files | grep -E '(^|/)(package\.json|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|pnpm-workspace\.yaml|bun\.lockb?)$' || true)
+          if [ -n "$bad$lock" ]; then
+            echo "::error::files the Anthropic directory refuses: $bad $lock"
+            exit 1
+          fi
