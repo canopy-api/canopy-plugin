@@ -80,7 +80,7 @@ canopy-plugin/
 │   │   ├── SKILL.md
 │   │   └── references/tools.md # tool parameters
 │   └── <nine more skills>/     # one SKILL.md each; see "What you get"
-├── assets/canopy-icon.png      # listing icon
+├── assets/                     # listing icon
 └── submissions/                # how to publish to each marketplace
 ```
 

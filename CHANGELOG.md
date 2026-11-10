@@ -8,6 +8,10 @@ Versions up to 2.2.0 were released from [canopy-api/canopy-api-mcp](https://gith
 
 ## [Unreleased]
 
+### Changed
+
+- `README.md` and `AGENTS.md` refer to the listing icon by its directory, not its file path. Anthropic's directory validator held the plugin for review (`UNREAD_ASSET_REFERENCED`) because those files named the image.
+
 ## [2.3.0] - 2026-11-09
 
 ### Added

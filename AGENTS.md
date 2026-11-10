@@ -24,7 +24,7 @@ Never add `package.json`, a lockfile, a package manager config (such as `pnpm-wo
 - `.mcp.json` — MCP server for Claude Code, Cursor, and Grok (`type: http`).
 - `plugin.json` and `mcp.json` — Agent Plugins 1.0.0 manifest and MCP declaration (`type: streamable-http`).
 - `skills/<name>/SKILL.md` — one directory per skill. The frontmatter `name` must match the directory.
-- `assets/canopy-icon.png` — listing icon referenced by the manifests.
+- `assets/` — the listing icon referenced by the manifests. Refer to it by directory in Markdown: the directory's validator holds the plugin for review when a doc names an image file by path.
 - `submissions/` — publishing steps and the xAI catalog entry.
 
 Server declarations never carry credentials: no `headers`, no API keys. Auth is OAuth discovered from the server.
